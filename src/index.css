@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.app {
+  display: flex;
+}
+
+.main-section {
+  flex-grow: 1;
+}
+
+h1, p {
+  margin: 0;
+}
