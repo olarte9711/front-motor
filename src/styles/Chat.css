@@ -1,0 +1,115 @@
+/* Estilos del contenedor del chat */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos del historial de mensajes */
+  .chat-history {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .no-messages {
+    text-align: center;
+    color: #888;
+  }
+  
+  /* Estilos de cada mensaje */
+  .chat-message {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #e6f7ff;
+    border-radius: 5px;
+    max-width: 80%;
+    word-wrap: break-word;
+  }
+  
+  /* Estilos adicionales para el mensaje del ChatBot */
+  .chatbot-message {
+    background-color: #d4f0e0;
+    align-self: flex-start;
+  }
+  
+  .message-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .message-user {
+    align-self: flex-end;
+    font-weight: bold;
+  }
+  
+  .message-timestamp {
+    font-size: 0.8em;
+    color: #999;
+  }
+  
+  .message-text {
+    font-size: 1em;
+  }
+  
+  /* Estilos del input y el botón de enviar */
+  .chat-input-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .chat-input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 1em;
+  }
+  
+  .chat-send-button {
+    margin-left: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .chat-send-button:hover {
+    background-color: #0056b3;
+  }
+
+  .search-button {
+    display: flex;
+    align-items: center;
+    padding: 15px 15px; 
+    background-color: #007bff; 
+    color: white; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+  }
+  
+  .search-button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el mouse */
+  }
+  
+  .button-icon {
+    width: 20px; /* Ancho de la imagen */
+    height: 20px; /* Alto de la imagen */
+    margin-right: 5px; /* Espacio entre la imagen y el texto */
+  }
+  

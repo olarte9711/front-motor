@@ -1,3 +1,23 @@
+/* Añadir esta clase para el estado activo */
+.sidebar ul li.active {
+  background-color: #1abc9c; /* Color de fondo para la opción activa */
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.sidebar ul li.active a {
+  color: white; /* Cambia el color del texto del enlace activo */
+}
+
+/* Mantén los demás estilos */
 .sidebar {
   width: 240px;
   height: 100vh;

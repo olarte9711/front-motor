@@ -1,18 +1,21 @@
 import React from 'react';
-import Sidebar from './components/SideBar';
-import Header from './components/Header';
-import MainContent from './components/MainContent';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
+import Motor from './components/Motor';
+import Login from './components/Login';
+import UserView from './components/views/UserView';
+import DocumentsView from './components/views/DocumentsView';
 
 const App = () => {
   return (
-    <div className="app">
-      <Sidebar />
-      <div className="main-section">
-        <Header />
-        <MainContent />
-      </div>
-    </div>
+    <Router>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/motor" element={<Motor />} />
+      <Route path="/users" element={<UserView />} />
+      <Route path="/documents" element={<DocumentsView />} />
+    </Routes>
+  </Router>
   );
 };
 

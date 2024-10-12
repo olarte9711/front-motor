@@ -1,7 +1,10 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import '../styles/SideBar.css';
 
 const Sidebar = () => {
+  const location = useLocation(); 
+
   return (
     <div className="sidebar">
         <div className="logo">
@@ -9,17 +12,32 @@ const Sidebar = () => {
             <span>Motor corporativo</span>
         </div>
         <ul>
-            <li><i className="fa fa-search"></i> Búsqueda</li>
-            <li><i className="fa fa-users"></i> Usuarios</li>
-            <li><i className="fa fa-file"></i> Documentos</li>
-            <li><i className="fa fa-cog"></i> Ajustes</li>
+            <li className={location.pathname === '/motor' ? 'active' : ''}>
+              <Link to="/motor">
+                <i className="fa fa-search"></i> Búsqueda
+              </Link>
+            </li>
+            <li className={location.pathname === '/users' ? 'active' : ''}>
+              <Link to="/users">
+                <i className="fa fa-users"></i> Usuarios
+              </Link>
+            </li>
+            <li className={location.pathname === '/documents' ? 'active' : ''}>
+              <Link to="/documents">
+                <i className="fa fa-file"></i> Documentos
+              </Link>
+            </li>
+            <li className={location.pathname === '/settings' ? 'active' : ''}>
+              <Link to="/settings">
+                <i className="fa fa-cog"></i> Ajustes
+              </Link>
+            </li>
         </ul>
         <div className="sidebar-footer">
             <ul>
                 <li><i>Ayuda</i></li>
                 <li><i>Contáctanos</i></li>
             </ul>
-
         <div className="logout">Log out</div>
       </div>
     </div>
@@ -27,3 +45,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+

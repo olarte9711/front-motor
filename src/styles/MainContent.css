@@ -76,6 +76,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 15px;
   width: 100%;
+  padding: 30px;
 }
 
 .filters div {
