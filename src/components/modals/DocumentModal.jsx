@@ -1,23 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styles/Modal.css';
+import { createDocument } from '../../helpers/IAHelper';
 
-const DocumentModal = ({ closeModal }) => {
+const DocumentModal = ({ closeModal, document, isUpdate }) => {
   const [name, setName] = useState('');
-  const [status, setStatus] = useState('Disponible');
-  const [category, setCategory] = useState('');
   const [url, setUrl] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    console.log('Nuevo Documento:', { name, status, category, url });
+    await createDocument(name, url)
+    console.log('Nuevo Documento:', { name, url });
     closeModal();
   };
+
+  useEffect(() => {
+    if (document) {
+      setName(document.name || '');
+      setUrl(document.link || '');
+    }
+  }, [document]);
 
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h2>Crear Nuevo Usuario</h2>
+      <h2>{isUpdate ? "Actualizar documento" : "Crear Nuevo Documento" }</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">Nombre</label>
@@ -26,28 +32,6 @@ const DocumentModal = ({ closeModal }) => {
               id="name" 
               value={name} 
               onChange={(e) => setName(e.target.value)} 
-              required 
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="status">Status</label>
-            <select 
-              id="status" 
-              value={status} 
-              onChange={(e) => setStatus(e.target.value)}
-              required
-            >
-              <option value="Disponible">Disponible</option>
-              <option value="No Disponible">No Disponible</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="category">Categoria</label>
-            <input 
-              type="text" 
-              id="category" 
-              value={category} 
-              onChange={(e) => setCategory(e.target.value)} 
               required 
             />
           </div>
@@ -62,7 +46,9 @@ const DocumentModal = ({ closeModal }) => {
             />
           </div>
           <div className="modal-actions">
-            <button type="submit" className="submit-btn">Crear</button>
+          <button type="submit" className="submit-btn">
+            {isUpdate ? 'Actualizar' : 'Crear'}
+          </button>
             <button type="button" className="cancel-btn" onClick={closeModal}>Cancelar</button>
           </div>
         </form>

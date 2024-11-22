@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import '../styles/Chat.css';
-import '../helpers/getSummaryIa.js'
-import getChatCompletion from '../helpers/getSummaryIa.js';
+import { getAnswer } from '../helpers/IAHelper.js';
+import { UserContext } from '../context/UserContext.jsx';
+
+
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
-
+  const { user } = useContext(UserContext);
   const handleSendMessage = (e) => {
     e.preventDefault();
 
@@ -14,7 +16,7 @@ const Chat = () => {
       const userMessage = {
         id: messages.length + 1,
         text: inputValue,
-        user: 'Alejandro',
+        user: user?.name ?? "User",
         timestamp: new Date().toLocaleTimeString(),
       };
 
@@ -26,8 +28,8 @@ const Chat = () => {
       setTimeout(async() => {
         const chatResponse = {
           id: messages.length + 2,
-          text: await getChatCompletion(inputValue),
-          user: 'ChatBot',
+          text: await getAnswer(inputValue),
+          user: 'Motor',
           timestamp: new Date().toLocaleTimeString(),
         };
 
@@ -43,7 +45,7 @@ const Chat = () => {
           <div className="no-messages">No hay mensajes aún...</div>
         ) : (
           messages.map((message) => (
-            <div key={message.id} className={`chat-message ${message.user === 'ChatBot' ? 'chatbot-message' : ''}`}>
+            <div key={message.id} className={`chat-message ${message.user === 'Motor' ? 'chatbot-message' : ''}`}>
               <div className="message-info">
                 <span className="message-user">{message.user}:</span>
                 <span className="message-timestamp">{message.timestamp}</span>
